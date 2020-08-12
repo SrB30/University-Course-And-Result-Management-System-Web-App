@@ -1,0 +1,312 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.00">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet" type="text/css" media="all" href="~/Styles/style.css" />
+    <link href="~/Styles/style_uwp.css" rel="stylesheet" />
+    
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("style", false)
+
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+        body {
+            font-family: "Lato", sans-serif;
+            transition: background-color .5s;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidenav a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidenav a:hover {
+                    color: #f1f1f1;
+                }
+
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body class="home blog livecss">
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Menu Bar &times;</a>
+        <ul style="font-size:5%">
+            <li style="font-size: small;"><h1 style="background-color: red;">@Html.ActionLink("Home", "Index", "Home")</h1></li>
+            <li></li>
+            <li>@Html.ActionLink("Save Department", "Save", "Department")</li>
+            <li>@Html.ActionLink("View All Department", "ShowDepartment", "Department")</li>
+            <li>@Html.ActionLink("Save Course", "Save", "Course")</li>
+            <li>@Html.ActionLink("Course Assign To Teacher", "Assign", "AssignCourseToTeacher")</li>
+            <li>@Html.ActionLink("View Course Statics", "Statics", "CourseStatics")</li>
+            <li>@Html.ActionLink("Register Student", "Register", "RegisterStudent")</li>
+            <li>@Html.ActionLink("Allocate Class Room", "ClassRoom", "AllocateClassRoom")</li>
+            <li>@Html.ActionLink("View Class & Room Allocation Information", "ClassRoomScedule", "ClassRoomSceduleAllocation")</li>
+            <li>@Html.ActionLink("Enroll In A course", "EnrollInACourse", "EnrollCourseToStudeent")</li>
+            <li>@Html.ActionLink("Save Student Result", "SaveStudentResult", "SaveStudentsResult")</li>
+            <li>@Html.ActionLink("View Student Result", "Result", "StudentResult")</li>
+            <li>@Html.ActionLink("Unassign All Courses", "UnassignCourses", "UnassignAllCourses")</li>
+            <li>@Html.ActionLink("Unallocate All Rooms", "UnallocateRooms", "UnallocateAllRooms")</li>
+        </ul>
+    </div>
+
+
+    
+    <div class="home blog livecss">
+
+        <div id="main" align="left">
+
+            <span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;</span>
+            <div align="center">
+                <div id="header-panel" style="background-color: white; height: 50px; border-radius: 6px 6px 6px 6px;">
+
+                    
+
+                    <div class="page" style="background-color: grey; height: 50px;">
+                        <div id="header" style="background-color: grey;">
+                            <div class="header-top">
+                                <h1 style="text-align: center; color: chartreuse; font-style: italic;">University Course & Result Management System</h1>
+                            </div><!--header-top end-->
+                            <div class="clear"></div>
+                            <div class="header-main" style="border-radius: 6px 6px 6px 6px;">
+
+                                <div id="ms-bg" style="background-color: black;">
+                                    <div id="main-menu" style="background-color: black;">
+                                        <div class="menu-header">
+
+                                            <ul>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615">
+                                                    <a href="#"></a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul"> </a></li>
+                                                <li id="menu-item-615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-615"><a href='#' class="sf-with-ul">Team-SAS</a></li>
+                                            </ul>
+
+                                        </div>
+                                    </div><!--main-menu end-->
+                                    <div id="search">
+                                    </div><!--search end-->
+                                    <div class="clear"></div>
+                                </div><!--ms-bg end-->
+                            </div><!--header-main end-->
+                        </div><!--header end-->
+                    </div><!--page end-->
+                </div><!--header-panel-->
+                <div class="page">
+                    <div class="clear"></div>
+                    <div id="Content-fullwidth">
+                        <div id="uwp-cleMain">
+                            <div id="uwp-user">
+                                &nbsp;You are logged in as: <b>Team-SAS</b> (<a href='#'>Team-SAS</a>)
+                            </div>
+
+                            <div id="rest">
+                                <div class="uwp-prop"></div>
+
+                                <div id="msgBar"></div>
+                                <div id="cleContent" style="text-align: center; display: inline-block;">
+                                    <div class="container body-content" style="width: auto; display: inline-block;">
+                                        @RenderBody()
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--content end-->
+                    <div id="footer">
+                        <div class="box986-top">
+                            <div class="box986-bottom">
+                                <div class="box986-mid">
+                                    <div class="footer-widget-section">
+                                        <div class="clear"></div>
+                                    </div><!--footer-widget end-->
+                                </div><!--box-487-mid end-->
+                                <div class="copyright-social">
+                                    <div class="copyright">
+                                        <p>
+                                            Copyright © 2018
+                                            <a href="#">Team-SAS</a>
+                                            | All Rights Reserved
+                                        </p>
+                                    </div><!--copyright end-->
+                                    <div class="counter">
+                                        <div class="footer-widget-5">
+                                            <div class="textwidget">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="social">
+                                        <p>
+
+                                        </p>
+                                    </div><!--social end-->
+                                    <div class="clear"></div>
+                                </div><!--copyright-social end-->
+
+                                <div style="text-align: right;"><a style="text-align: right;" href="~/Home/Index">Home</a></div>
+                            </div><!--box-487-bottom end-->
+                        </div><!--box-487-top end-->
+
+                    </div><!--footer end-->
+                    <!--stats_footer_test-->
+
+                </div>
+            </div>
+            <hr />
+            <footer></footer>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "350px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
+    @*<div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer></footer>
+        </div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+

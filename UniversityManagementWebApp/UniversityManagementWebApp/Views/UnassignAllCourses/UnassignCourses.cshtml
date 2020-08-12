@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "UnassignAllCourses";
+    Layout = "../Shared/view1.cshtml";
+}
+
+<br />
+<h3 align="center">Unassign All Courses</h3>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    <input type="submit" name="submit" id="submit" class="btn btn-danger btn-lg" value="Unassign Courses" style="margin-left: 43%" />
+}
+@if (ViewBag.Message != String.Empty)
+{
+    <p align="center">@ViewBag.Message</p>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $().ready(function () {
+            $("#submit").click(function () {
+                return  confirm("This will unassign all courses. Do you want to proceed?");
+            });
+        });
+    </script>
+}

@@ -1,0 +1,94 @@
+﻿@model UniversityManagementWebApp.Models.Course
+@{
+    ViewBag.Title = "Save";
+    Layout = "../Shared/view1.cshtml";
+}
+
+
+@section style
+{
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+}
+<body>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("Code")
+                </td>
+                <td>
+                    @Html.TextBox("Code")
+                    @Html.ValidationMessage("Code")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Name")
+                </td>
+                <td>
+                    @Html.TextBox("Name")
+                    @Html.ValidationMessage("Name")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Credit")
+                </td>
+                <td>
+                    @Html.TextBox("Credit")
+                    @Html.ValidationMessage("Credit")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Description")
+                </td>
+                <td>
+                    @Html.TextBox("Description")
+                    @Html.ValidationMessage("Description")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("DepartmentId")
+                </td>
+                <td>
+                    @Html.DropDownList("DepartmentId", new SelectList(ViewBag.Departments, "Value", "Text"))
+                    @Html.ValidationMessage("DepartmentId")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("SemesterId")
+                </td>
+                <td>
+                    @Html.DropDownList("SemesterId", new SelectList(ViewBag.Semesters, "Value", "Text"))
+                    @Html.ValidationMessage("SemesterId")
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button id="save">Save</button>
+                </td>
+            </tr>
+        </table>
+    }
+    @if (ViewBag.Message != null)
+    {
+        <h3>@ViewBag.Message</h3>
+    }
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }
+</body>

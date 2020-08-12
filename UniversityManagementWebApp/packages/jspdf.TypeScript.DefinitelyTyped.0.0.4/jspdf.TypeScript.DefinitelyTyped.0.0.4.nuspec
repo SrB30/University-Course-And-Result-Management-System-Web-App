@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>jspdf.TypeScript.DefinitelyTyped</id>
+    <version>0.0.4</version>
+    <title>jspdf.TypeScript.DefinitelyTyped</title>
+    <authors>Jason Jarrett</authors>
+    <owners>Jason Jarrett</owners>
+    <licenseUrl>https://github.com/DefinitelyTyped/NugetAutomation/blob/master/LICENSE.MIT</licenseUrl>
+    <projectUrl>https://github.com/DefinitelyTyped/</projectUrl>
+    <iconUrl>https://api.nuget.org/v3-flatcontainer/jspdf.typescript.definitelytyped/0.0.4/icon</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>TypeScript Definitions (d.ts) for jspdf. Generated based off the DefinitelyTyped repository [git commit: b09b4beef0245fc323fb8a54d925681516fde386]. http://github.com/DefinitelyTyped</description>
+    <summary />
+    <copyright>Copyright 2013</copyright>
+    <tags>TypeScript JavaScript</tags>
+  </metadata>
+</package>

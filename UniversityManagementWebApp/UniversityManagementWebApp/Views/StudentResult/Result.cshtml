@@ -1,0 +1,166 @@
+﻿@model UniversityManagementWebApp.Models.StudentResult
+@{
+    ViewBag.Title = "Result";
+    Layout = "../Shared/view1.cshtml";
+}
+
+@section style
+{
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/fixedColumns.jqueryui.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+<body>
+    <div id="editor"></div>
+    <div id="content">
+
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("StudentId")
+                </td>
+                <td>
+                    @Html.DropDownList("StudentId", new SelectList(ViewBag.RegestrationNo, "Value", "Text"))
+                    @Html.ValidationMessage("StudentId")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Name")
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.Name, new { @readonly = "readonly" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Email")
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.Email, new { @readonly = "readonly" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Department")
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.Department, new { @readonly = "readonly" })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" id="MakePdf" value="Make PDF" name="MakePdf" />
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <br />
+        <table id="dataTable" class="table table-bordered table-responsive table-hover">
+
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Name/Title</td>
+                    <td>Grade</td>
+                </tr>
+
+
+            </thead>
+            <tbody id="resultDetails"></tbody>
+        </table>
+
+    </div>
+    @section scripts
+{
+        <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+        <script>
+            $(document).ready(function () {
+
+                $("#dataTable").hide();
+                $("#StudentId").change(function () {
+
+                    $("#dataTable").hide();
+
+                    var json = { studentId: $("#StudentId").val() };
+
+                    $("#Name").val("");
+                    $("#Email").val("");
+                    $("#Department").val("");
+                    $("#dataTable").hide();
+
+                    $("#resultDetails").empty();
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetStudentDetailsById", "StudentResult")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(json),
+                        success: function (data) {
+
+                            $.each(data, function (key, value) {
+                                $("#Name").val(value.Name);
+                                $("#Email").val(value.Email);
+                                $("#Department").val(value.DepartmentName);
+
+                            });
+                        }
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetStudentResultById", "StudentResult")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(json),
+                        success: function (data) {
+
+                            $("#resultDetails").empty();
+                            var found = false;
+
+                            $.each(data, function (key, value) {
+                                found = true;
+                                $("#resultDetails").append('<tr><td>' + value.CourseCode + '</td>  <td>' + value.Name + '</td>   <td>' + value.Grade + '</td></tr>');
+
+                            });
+                            if (found) {
+                                $("#dataTable").show();
+                            }
+                        }
+                    });
+
+
+                });
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+
+        <script>
+
+            $(document).ready(function () {
+                var specialElementHandlers = {
+                    '#editor': function () { return true; }
+                };
+
+                $('#MakePdf').click(function () {
+                    var doc = new jsPDF();
+                    doc.fromHTML($('#content').html(), 15, 15, {
+                        'width': 170,
+                        'elementHandlers': specialElementHandlers
+                    });
+
+                    doc.save('StudentResult.pdf');
+                })
+            });
+        </script>
+    }
+</body>

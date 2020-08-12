@@ -1,0 +1,58 @@
+﻿@using UniversityManagementWebApp.Models
+@model IEnumerable<Department>
+@{
+    ViewBag.Title = "ShowDepartment";
+    Layout = "../Shared/view1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.18/datatables.min.css" />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+@section style
+{
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/fixedColumns.jqueryui.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+<body>
+    <table id="dataTable" class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <td>Code</td>
+                &nbsp;
+                <td>Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Department department in Model)
+            {
+                <tr>
+                    <td>@department.Code</td>
+                    <td>@department.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.18/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').dataTable();
+        });
+    </script>
+</body>
+
+</html>

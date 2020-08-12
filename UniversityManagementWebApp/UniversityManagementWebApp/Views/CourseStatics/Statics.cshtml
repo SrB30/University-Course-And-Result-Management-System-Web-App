@@ -1,0 +1,101 @@
+﻿@using UniversityManagementWebApp.Models
+@{
+    ViewBag.Title = "Statics";
+    Layout = "../Shared/view1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <style>
+
+        table,th,td{
+            border: 1px solid black;
+        }
+
+    </style>
+    @section style
+{
+        <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+        <link href="~/Content/DataTables/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+        <link href="~/Content/DataTables/css/fixedColumns.jqueryui.min.css" rel="stylesheet" />
+        <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    }
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("Department")
+                </td>
+                <td>
+                    @Html.DropDownList("Department", new SelectList(ViewBag.Departments,"Value","Text"))
+                </td>
+            </tr>
+        </table>
+        <br />
+        <h4>Course Information</h4>
+    <table id="dataTable" class="table table-bordered table-responsive table-hover">
+
+        <thead>
+
+            <tr>
+                <td>Code</td>
+                <td>Name/Title</td>
+                <td>Semester</td>
+                <td>Assigned To</td>
+            </tr>
+
+        </thead>
+
+        <tbody id="courseDetails"></tbody>
+    </table>
+    }
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+<script>
+
+    $(document).ready(function () {
+        
+        $("#dataTable").hide();
+        $("#Department").change(function () {
+
+            $("#dataTable").hide();
+            var departmentId = $("#Department").val();
+            $("#courseDetails").empty();
+
+            var json = { deptId: departmentId };
+
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetCourseStaticById", "CourseStatics")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    $("#dataTable").show();
+
+                    $.each(data, function (key, value) {
+                        $("#courseDetails").append('<tr><td>' + value.Code + '</td>   <td>' + value.Name + '</td>   <td>' + value.Semester +
+                                                    '</td> <td>' + value.AssignTo + '</td> </tr>');
+                    });
+                }
+            });
+
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
+

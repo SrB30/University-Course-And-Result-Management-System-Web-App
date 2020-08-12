@@ -1,0 +1,6 @@
+F:\code\Dot Net Visual C#\Project BITM 2\project copy version\UniversityManagementWebApp\UniversityManagementWebApp\bin\UniversityManagementWebApp.dll.config
+F:\code\Dot Net Visual C#\Project BITM 2\project copy version\UniversityManagementWebApp\UniversityManagementWebApp\bin\UniversityManagementWebApp.dll
+F:\code\Dot Net Visual C#\Project BITM 2\project copy version\UniversityManagementWebApp\UniversityManagementWebApp\bin\UniversityManagementWebApp.pdb
+F:\code\Dot Net Visual C#\Project BITM 2\project copy version\UniversityManagementWebApp\UniversityManagementWebApp\obj\Debug\UniversityManagementWebApp.dll
+F:\code\Dot Net Visual C#\Project BITM 2\project copy version\UniversityManagementWebApp\UniversityManagementWebApp\obj\Debug\UniversityManagementWebApp.pdb
+F:\code\Dot Net Visual C#\Project BITM 2\project copy version\UniversityManagementWebApp\UniversityManagementWebApp\obj\Debug\UniversityManagementWebApp.csprojResolveAssemblyReference.cache

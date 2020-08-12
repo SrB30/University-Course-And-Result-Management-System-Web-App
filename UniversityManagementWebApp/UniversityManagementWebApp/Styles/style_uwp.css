@@ -1,0 +1,243 @@
+﻿/**************************************************/
+/*           TWP + SWP + OAM styles               */
+/**************************************************/
+table.login
+{
+    border: 2px green solid;
+    margin: auto;
+    background:#BDE5F8;
+}
+table.login tr ,table.login td 
+{
+    border: 0px white solid;
+    
+    
+}
+
+ul#menubar {   
+list-style-type:none;
+margin:0;
+padding:0;
+
+}
+ul#menubar li
+{
+display:inline;
+}
+
+ul#menubar li:before {
+content: " | ";
+}
+
+ul#menubar li:first-child:before {
+content: none;
+}
+
+ul#menubar li.current span
+{
+    color: #FEEFB3;
+    font-size: large;   
+}
+
+p.uwp-student-info-header{
+    text-align: center;
+    font-size:1.8em;
+    font-weight:normal;
+    color:#0d0357;
+    padding-bottom:5px;
+    margin:0 0 12px 0;        
+}
+
+p.uwp-student-info{
+    text-align: center;
+    font-size: 16px;
+}
+
+hr.uwp-student-info-bottom{
+    border: 1px solid #CCCCCC;
+}
+
+.uwp-info, .uwp-success, .uwp-warning, .uwp-error {
+    border: 1px solid;
+    margin: 10px 40px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;-moz-border-radius:.5em;
+-webkit-border-radius:.5em;
+border-radius:.5em;
+font-weight: bold;
+font-size: small;
+text-align: center;
+
+}
+.uwp-info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('images/info.png');
+}
+.uwp-success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('images/success.png');
+}
+.uwp-warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('images/warning.png');
+}
+.uwp-error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('images/error.png');
+	
+	}
+
+table.uwp-noborder{
+    margin: auto;
+    border-collapse: collapse;
+    border:none;
+}
+
+.uwp-noborder td{
+    border:none;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.uwp-noborder#controls td{
+    border:none;
+}
+
+.uwp-noborder td.uwp-label{
+    color: gray;
+    text-align: right;
+    padding: 5px;
+   
+}
+
+.uwp-noborder td.uwp-profile-name{
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.uwp-noborder td.uwp-menu-item{
+    font-size: 16px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.uwp-body-link a, .uwp-body-link a:hover{
+    font-size: 16px;
+    margin: 5px;
+       
+}
+
+a.uwp-body-link{
+    font-size: 16px;
+    color: #005D25; 
+}
+a.uwp-body-link:hover {
+    font-size: 16px;
+    color:  #009e25; 
+}
+
+p.uwp-body-link-inactive{
+    color: #858585;
+    text-align: center;
+    margin: 5px;
+}
+
+.uwp-noborder td.uwp-menu-item a{
+    color: #005D25;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.uwp-noborder td.uwp-menu-item a:hover{
+    color: #009e25;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.uwp-noborder td.uwp-infocell{
+    text-align: left;
+}
+
+table.uwp-content
+{
+    border: #005D25 1px solid;   
+    margin: auto;
+    border-collapse: collapse;
+}
+.uwp-content th
+{
+    font-size: 12px;
+    color: white;
+    background-color: #005D25;  
+    padding: 5px;
+}
+.uwp-content td
+{
+    border: #005D25 1px solid;
+    font-size: 12px;
+    padding: 5px;
+}
+
+p.uwp-h2{
+    text-align: center;
+}
+
+.uwp-prop
+{
+    float: right;
+    width: 1px;
+    height: 280px;
+}
+
+/*************** Test Purpose *****************************/
+
+#uwp-cleMain{
+    font-size: 12px; 
+}
+
+#uwp-user{
+    text-align: left;    
+    width: 100%;
+    clear: both;
+}
+
+#uwp-filter-info{
+    width: 98%;
+    clear: both;
+    margin: 10px 0px 10px 0px;
+    padding: 10px;
+    border-bottom: 2px solid #cccccc;
+    border-color: #CCCCCC;
+}
+
+#uwp-filter-info table,#uwp-filter-info td{
+    border: none;
+    margin: auto;
+}
+
+table.uwp-formTable{
+    border: 1px solid #005D25;
+    margin: auto;
+	
+    
+}
+
+table.uwp-formTable td{
+    border: none;
+    padding: 7px;
+	
+}
+
+table.uwp-formTable th{
+    border: none; 
+    color: white;
+    background-color: #005D25;
+    font-size: 14px;
+    padding: 10px;
+}

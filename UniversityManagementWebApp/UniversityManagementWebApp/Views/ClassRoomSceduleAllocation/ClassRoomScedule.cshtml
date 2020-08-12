@@ -1,0 +1,79 @@
+﻿@model UniversityManagementWebApp.Models.Department
+@{
+    ViewBag.Title = "ClassRoomScedule";
+    Layout = "../Shared/view1.cshtml";
+}
+
+@section style
+{
+    <style>
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+}
+<body>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.Name)
+                </td>
+                <td>
+                    @Html.DropDownList("DepartmentId", new SelectList(ViewBag.Departments, "Value", "Text"))
+                </td>
+            </tr>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <td>Course Code</td>
+                    <td>Name</td>
+                    <td>Schedule Info</td>
+                </tr>
+            </thead>
+            <tbody id="sceduleDetails"></tbody>
+        </table>
+    }
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+        <script>
+
+            $(document).ready(function () {
+
+                $("#DepartmentId").change(function () {
+
+                    var departmentId = $("#DepartmentId").val();
+
+
+                    var json = { deptId: departmentId };
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetClassRoomSceduleByDepartmentId", "ClassRoomSceduleAllocation")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(json),
+                        success: function (data) {
+
+                            $("#sceduleDetails").empty();
+
+
+                            $.each(data, function (key, value) {
+
+                                $("#sceduleDetails").append('<tr><td>' + value.CourseCode + '</td> <td>' + value.CourseName + '</td>  <td>' + value.ClassScheduleInfo + '</td> </tr>');
+
+                            });
+
+                        }
+                    });
+
+                });
+            });
+        </script>
+    }
+</body>

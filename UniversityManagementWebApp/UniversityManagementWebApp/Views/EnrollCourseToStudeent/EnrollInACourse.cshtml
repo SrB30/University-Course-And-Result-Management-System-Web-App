@@ -1,0 +1,160 @@
+﻿@model UniversityManagementWebApp.Models.EnrollCourseToStudent
+@{
+    ViewBag.Title = "EnrollInACourse";
+    Layout = "../Shared/view1.cshtml";
+}
+@section style
+{
+
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+}
+
+<h2>Enroll In A Course</h2>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.StudentId)
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.StudentId, new SelectList(ViewBag.Students, "Value", "Text"))
+                @Html.ValidationMessageFor(x => x.StudentId)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.Name)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Name, null, new { @readonly = "readonly" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.Label("Email")
+            </td>
+            <td>
+                @Html.TextBox("Email", null, new { @readonly = "readonly" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.Label("Department")
+            </td>
+            <td>
+                @Html.TextBox("Department", null, new { @readonly = "readonly" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.CourseId)
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.CourseId, new SelectList(ViewBag.Courses, "Value", "Text"))
+                @Html.ValidationMessageFor(x => x.CourseId)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.EnrollDate)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.EnrollDate)
+                @Html.ValidationMessageFor(x => x.EnrollDate)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td>
+                <input id="Enroll" name="Enroll" value="Enroll" type="submit" />
+            </td>
+        </tr>
+
+    </table>
+
+    if (@ViewBag.Message != null)
+    {
+        <h3>@ViewBag.Message</h3>
+    }
+}
+
+@section scripts
+{
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#StudentId").change(function () {
+
+                var json = { studentId: $("#StudentId").val() };
+
+                $("#CourseId").empty();
+                $("#Name").val("");
+                $("#Email").val("");
+                $("#Department").val("");
+
+                $("#CourseId").append('<option value=""> ---Select---</option>');
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetStudentDetailsById", "EnrollCourseToStudeent")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#Name").val(value.Name);
+                            $("#Email").val(value.Email);
+                            $("#Department").val(value.DepartmentName);
+                        });
+                    }
+                });
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetAllCourseByStudentsDepartmentId", "EnrollCourseToStudeent")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#CourseId").empty();
+                        $.each(data, function (key, value) {
+
+                            $("#CourseId").append('<option value="' + value.Value + '">' + value.Text + '</option>');
+
+                        });
+
+                    }
+                });
+
+
+
+            });
+
+            var d = new Date();
+            var m = d.getMonth() + 1;
+            var date = d.getFullYear() + "-" + m + "-" + d.getDate();
+            $("#EnrollDate").datepicker({
+                dateFormat: 'yy-mm-dd'
+                //'disableTextInput': true
+            }).attr('readonly', 'readonly');
+            $("#EnrollDate").val(date);
+        });
+    </script>
+}
+
