@@ -1,2 +1,5 @@
 Database/UniversityManagementSAS_log.ldf
 Database/UniversityManagementSAS.mdf
+.vs
+bin/
+obj/
